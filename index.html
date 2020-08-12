@@ -1,0 +1,51 @@
+<!--  Derivation Tree Generator - A syntax tree graph generator
+ credit to 2019 Andre Eisenbach <andre@ironcreek.net>
+ You can find the original repo here "https://github.com/int2str/jssyntaxtree/"
+ I have added some comments to explain the process of generating derivation tree  
+ Feel free to explore! (hkz) 
+ GLHF
+ -->
+
+<!DOCTYPE html>
+<title>Derivation Tree Generator</title>
+<script type="module" src="canvas.js"></script>
+<script type="module" src="node.js"></script>
+<script type="module" src="tree.js"></script>
+<script type="module" src="syntaxtree.js"></script>
+<link rel="stylesheet" type="text/css" href="default.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<h1>Derivation Tree Generator for Assignment W1-W4</h1>
+
+<div id="options">
+  <select id="font">
+    <option value="sans-serif" selected="selected">sans-serif</option>
+    <option value="serif">serif</option>
+    <option value="monospace">monospace</option>
+  </select>&nbsp; 
+  <select id="fontsize">
+    <option value="12">12</option>
+    <option value="14">14</option>
+    <option value="16" selected="selected">16</option>
+    <option value="18">18</option>
+    <option value="20">20</option>
+    <option value="24">24</option>
+    <option value="36">36</option>
+  </select>&nbsp;
+  <input type="checkbox" id="nodecolor" checked="checked" /> Color
+  <input type="checkbox" id="bottom" /> Align at bottom
+</div>
+
+<p>This is Derivation Tree Generator for problem no.2<br>You can generate derivation tree from bracket notation phrases and then click on the tree to download and add them into your assignment W1-W4.</p>
+
+<div id="input">
+<h2>The following is the example from page 34</h2>
+<textarea cols="40" rows="5" id="code">[E [E [I [I [a]] [b]]] [*] [E [(] [E [E [I [a]]] [+] [E [I [b]]]] [)]]]</textarea>
+<span id="parse-error"></span>
+</div>
+
+<div id="tree"><canvas id="canvas" width="100" height="100" /></div>
+
+<div id="tip">Click on the tree to download a copy.</div>
+<a id="link" />
