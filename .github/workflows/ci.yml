@@ -1,7 +1,6 @@
 name: CI
 
 on:
-  push:
   pull_request:
     types:
       - opened
@@ -15,13 +14,9 @@ jobs:
   deployPRDraft:
     name: Deploy draft to Netlify
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.ref != 'refs/heads/master'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
-
-      # ... your other build steps to produce a build directory
-      # e.g. `yarn build` for create-react-app
 
       - name: Deploy draft to Netlify
         uses: South-Paw/action-netlify-deploy@v1.0.4
@@ -32,26 +27,3 @@ jobs:
           build-dir: '.'
           draft: true
           comment-on-pull-request: true
-
-  # This job will:
-  #   * deploy a production build every time there is a push on the master branch
-  #   * comment that commit with the deploy URL
-  publishMasterCommit:
-    name: Publish to Netlify
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v1
-
-      # ... your other build steps to produce a build directory
-      # e.g. `yarn build` for create-react-app
-
-      - name: Deploy production to Netlify
-        uses: South-Paw/action-netlify-deploy@v1.0.4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
-          build-dir: '.'
-          comment-on-commit: true
