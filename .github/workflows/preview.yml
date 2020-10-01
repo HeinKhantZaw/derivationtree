@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: afc163/surge-preview@v1
         with:
-          surge_token: 6973bdb764f0d5fd07c910de27e2d7d0
+          surge_token: 9ddce3e42bf6ca8bca8a8f14321af78c
           github_token: 942ba5197f1dea9507df61784a8d788d15263d0e
           build: |
             npm install
